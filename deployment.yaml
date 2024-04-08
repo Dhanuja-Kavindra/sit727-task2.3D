@@ -1,0 +1,20 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: finance-tracker
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: finance-tracker
+  template:
+    metadata:
+      labels:
+        app: finance-tracker
+    spec:
+      containers:
+      - name: finance-tracker
+        image: localhost:32000/finance_track:latest
+        imagePullPolicy: IfNotPresent
+        ports:
+        - containerPort: 8080

@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Finance History</title>
+</head>
+<body>
+    <h2>Finance History</h2>
+    <table>
+        <thead>
+            <tr>
+                <th>Date</th>
+                <th>Type</th>
+                <th>Description</th>
+                <th>Amount</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr th:each="transaction : ${transactions}">
+                <td th:text="${transaction.transactionDate}"></td>
+                <td th:text="${transaction.type}"></td>
+                <td th:text="${transaction.description}"></td>
+                <td th:text="${transaction.amount}"></td>
+            </tr>
+        </tbody>
+    </table>
+
+    <!-- Button to go to the Finance Tracker page to add new transactions -->
+    <form action="/financeTracker" method="get">
+        <button type="submit">Go to Finance Tracker</button>
+    </form>
+
+    <!-- Logout Form -->
+    <form th:action="@{/logout}" method="post">
+        <input type="submit" value="Logout" />
+    </form>
+</body>
+</html>
